@@ -11,9 +11,11 @@ import project3 from '../Assets/flight.jpg';
 import project4 from '../Assets/project-img1.png';
 import project5 from '../Assets/project-img2.png';
 import project6 from '../Assets/project-img3.png';
+import {motion} from 'framer-motion'
 
 export default function Project() {
   const [value, setValue] = React.useState(0);
+  const [highlightedProject, setHighlightedProject] = React.useState(null);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -78,7 +80,7 @@ export default function Project() {
       >
         <Tab label="Tab 1" sx={{ borderRadius: '30px' }} />
         <Tab label="Tab 2" sx={{ borderRadius: '30px' }} />
-        <Tab label="Tab 3" sx={{ borderRadius: '30px' }} />
+       
       </Tabs>
 
       {/* Tab 1: Display Projects */}
@@ -86,85 +88,95 @@ export default function Project() {
         <Box sx={{ p: 3, color: 'white' }}>
           <Grid container spacing={4}>
             {projects.map((project, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}> {/* Updated to make images occupy full width in grid */}
-                <Box sx={{ textAlign: 'center' }}>
-                  <img src={project.image} alt={project.name} style={{ width: '100%', height: '250px', borderRadius: '8px',objectFit:'cover' }} />
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <motion.div
+                  whileHover={{
+                    scale: 1.05, 
+                    boxShadow: '0px 4px 15px rgba(0,0,0,0.3)', // Hover effect
+                  }}
+                  transition={{ type: 'spring', stiffness: 400 }}
+                  style={{
+                    textAlign: 'center',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <img src={project.image} alt={project.name} style={{ width: '90%', height: '250px', borderRadius: '8px', objectFit: 'cover' }} />
                   <Typography variant="h6" sx={{ marginTop: 2 }}>
                     {project.name}
                   </Typography>
                   <Typography variant="body2" sx={{ marginTop: 1 }}>
                     {project.description}
                   </Typography>
-                </Box>
+                </motion.div>
               </Grid>
             ))}
           </Grid>
         </Box>
       )}
-
+      
       {/* Tab 2: Placeholder Projects */}
       {value === 1 && (
         <Box sx={{ p: 3, color: 'white' }}>
           <Grid container spacing={4}>
             <Grid item xs={12} sm={6} md={4}>
-              <Box sx={{ textAlign: 'center' }}>
-                <img src={project4} alt="Placeholder Project 1" style={{ width: '100%', height: '330px', borderRadius: '8px' }} />
+            <motion.div
+                  whileHover={{
+                    scale: 1.05, 
+                    boxShadow: '0px 4px 15px rgba(0,0,0,0.3)', // Hover effect
+                  }}
+                  transition={{ type: 'spring', stiffness: 400 }}
+                  style={{
+                    textAlign: 'center',
+                    cursor: 'pointer'
+                  }}
+                >
+                <img src={project4} alt="Placeholder Project 1" style={{ width: '90%', height: '330px', borderRadius: '8px' }} />
                 <Typography variant="h6" sx={{ marginTop: 2 }}>
                   Project 1
                 </Typography>
-              </Box>
+              </motion.div>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-              <Box sx={{ textAlign: 'center' }}>
-                <img src={project5} alt="Placeholder Project 2" style={{ width: '100%', height: '330px', borderRadius: '8px' }} />
+            <motion.div
+                  whileHover={{
+                    scale: 1.05, 
+                    boxShadow: '0px 4px 15px rgba(0,0,0,0.3)', // Hover effect
+                  }}
+                  transition={{ type: 'spring', stiffness: 400 }}
+                  style={{
+                    textAlign: 'center',
+                    cursor: 'pointer'
+                  }}
+                >
+                <img src={project5} alt="Placeholder Project 2" style={{ width: '90%', height: '330px', borderRadius: '8px' }} />
                 <Typography variant="h6" sx={{ marginTop: 2 }}>
                   Project 2
                 </Typography>
-              </Box>
+              </motion.div>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-              <Box sx={{ textAlign: 'center' }}>
-                <img src={project6} alt="Placeholder Project 3" style={{ width: '100%', height: '330px', borderRadius: '8px' }} />
+            <motion.div
+                  whileHover={{
+                    scale: 1.05, 
+                    boxShadow: '0px 4px 15px rgba(0,0,0,0.3)', // Hover effect
+                  }}
+                  transition={{ type: 'spring', stiffness: 400 }}
+                  style={{
+                    textAlign: 'center',
+                    cursor: 'pointer'
+                  }}
+                >
+                <img src={project6} alt="Placeholder Project 3" style={{ width: '90%', height: '330px', borderRadius: '8px' }} />
                 <Typography variant="h6" sx={{ marginTop: 2 }}>
                   Project 3
                 </Typography>
-              </Box>
+              </motion.div>
             </Grid>
           </Grid>
         </Box>
       )}
 
-      {/* Tab 3: Placeholder Projects */}
-      {value === 2 && (
-        <Box sx={{ p: 3, color: 'white' }}>
-          <Grid container spacing={4}>
-            <Grid item xs={12} sm={6} md={4}>
-              <Box sx={{ textAlign: 'center' }}>
-                <img src={project2} alt="Placeholder Project 1" style={{ width: '100%', height: '330px', borderRadius: '8px' }} />
-                <Typography variant="h6" sx={{ marginTop: 2 }}>
-                  Project 1
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <Box sx={{ textAlign: 'center' }}>
-                <img src={project4} alt="Placeholder Project 2" style={{ width: '100%', height: '330px', borderRadius: '8px' }} />
-                <Typography variant="h6" sx={{ marginTop: 2 }}>
-                  Project 2
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <Box sx={{ textAlign: 'center' }}>
-                <img src={project3} alt="Placeholder Project 3" style={{ width: '100%', height: '330px', borderRadius: '8px' }} />
-                <Typography variant="h6" sx={{ marginTop: 2 }}>
-                  Project 3
-                </Typography>
-              </Box>
-            </Grid>
-          </Grid>
-        </Box>
-      )}
+     
     </Box>
   );
 }

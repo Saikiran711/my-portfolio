@@ -12,7 +12,7 @@ export default function Mainnav() {
       <ResponsiveAppBar />
       <div style={{  minHeight: '90vh', color: 'white' }}> 
         <section id="about" style={{ padding: '10px 0', marginBottom: '0' }}>
-          <About/> {/* About Content Here */}
+          <About/> {/* About Content Here since we using hash link browser  will to that respective section */}
         </section>
         <section id="skills" style={{ padding: '50px 0', marginBottom: '0' }}>
           <SkillsCard /> 
@@ -24,7 +24,7 @@ export default function Mainnav() {
           <Contact/>
         </section>
       </div>
-      <Outlet />
+      {/* <Outlet /> no need of outlet since using hash link  */}
     </>
   );
 }

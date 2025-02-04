@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { motion } from 'framer-motion'; 
 import { HashLink } from 'react-router-hash-link';  // Import HashLink for smooth scrolling
 
 const pages = ['About', 'Skills', 'Projects', 'Contact'];
@@ -19,6 +20,7 @@ const pages = ['About', 'Skills', 'Projects', 'Contact'];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [activeSection, setActiveSection] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -34,6 +36,24 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const sections = pages.map(page => document.getElementById(page.toLowerCase()));
+      const scrollPosition = window.scrollY + window.innerHeight / 2; // Midpoint of viewport
+
+      let active = null;
+      sections.forEach(section => {
+        if (section && section.offsetTop <= scrollPosition && section.offsetTop + section.clientHeight > scrollPosition) {
+          active = section.id;
+        }
+      });
+      setActiveSection(active); // Set the active section
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll); // Cleanup
+  }, []);
 
   return (
     <AppBar position="fixed" sx={{ top: 0, left: 0, right: 0 }}>
@@ -90,7 +110,22 @@ function ResponsiveAppBar() {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <HashLink smooth to={`#${page.toLowerCase()}`} style={{ textDecoration: 'none' }}>
-                    <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                  <motion.div
+                    initial={{ scale: 1 }}
+                    animate={{
+                      scale: activeSection === page.toLowerCase() ? 1.1 : 1,
+                      backgroundColor: activeSection === page.toLowerCase() ? '#663399' : 'transparent',
+                    }}
+                   
+                    transition={{ type: 'spring', stiffness: 300 }}
+                    style={{
+                      padding: '10px 20px',
+                      borderRadius: '5px',
+                      display: 'inline-block',
+                    }}
+                  >
+                    {page}
+                  </motion.div>
                   </HashLink>
                 </MenuItem>
               ))}
@@ -100,9 +135,29 @@ function ResponsiveAppBar() {
           {/* Desktop Menu */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button key={page} onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>
+              <Button key={page} onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' ,position:'relative'}}>
                 <HashLink smooth to={`#${page.toLowerCase()}`} style={{ color: 'white', textDecoration: 'none' }}>
-                  {page}
+                <motion.div
+                    initial={{ scale: 1 }}
+                    animate={{
+                      scale: activeSection === page.toLowerCase() ? 1.1 : 1,
+                      backgroundColor: activeSection === page.toLowerCase() ? '#663399' : 'transparent',
+                    }}
+                    whileHover={{
+                      scale: 1.1, 
+                      color: '#ffffff', // Change text color to white on hover
+                      backgroundColor: '#441a75', // Darken the background color when hovered
+                  
+                    }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                    style={{
+                      padding: '10px 20px',
+                      borderRadius: '5px',
+                      display: 'inline-block',
+                    }}
+                  >
+                    {page}
+                  </motion.div>
                 </HashLink>
               </Button>
             ))}

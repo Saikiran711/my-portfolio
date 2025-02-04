@@ -48,7 +48,7 @@
     width: 100%;
     padding: 12px;
     margin-bottom: 20px;
-    border: 2px solid #e01458; /* Pink border */
+    border: 2px solid #fcfcfc; /* Pink border */
     border-radius: 4px;
     background-color: transparent;
     color: black;
@@ -71,7 +71,7 @@
 }
 
 .contact button {
-    background-color: #f06292; /* Pink button */
+    background-color: #610dc0fb; /* Pink button */
     color: white;
     padding: 12px 25px;
     border: none;
@@ -87,7 +87,7 @@
 
 /* Success and Error Messages */
 .contact p.success {
-    color: #4caf50; /* Green for success */
+    color: #036b06; /* Green for success */
     font-size: 18px;
     font-weight: bold;
 }

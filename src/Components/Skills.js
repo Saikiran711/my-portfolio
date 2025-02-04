@@ -3,6 +3,7 @@ import { Box, Card, CardContent, Typography, IconButton, CircularProgress, Grid 
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
+
 export default function SkillsCard() {
   const [scrollIndex, setScrollIndex] = React.useState(0);
   const skills = [

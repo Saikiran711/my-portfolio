@@ -11,12 +11,7 @@ const router=createBrowserRouter([
   {
     path:"/",
     element:<Mainnav/>,
-    children:[
-      {path:"/projects",element:<Projects/>},
-      {path:"/skills",element:<Skills/>},
-      {path:"/about",element:<About/>},
-      {path:"/contact",element:<Contact/>}
-    ]
+    
 
   }
 ]);
