@@ -32,7 +32,7 @@ export default function SkillsCard() {
   };
 
   return (
-    <Box
+    <Box id="skills"
       sx={{
         display: 'flex',
         justifyContent: 'center',
@@ -40,11 +40,12 @@ export default function SkillsCard() {
         flexDirection: 'column',
         marginTop: 5,
         padding: 2,
+        width: '100%'
       }}
     >
-      <Card sx={{ width: '90%', maxWidth: 1000, backgroundColor: 'black',padding: 3, height: 400  }}>
+      <Card sx={{ width: '100%', maxWidth: 1900, backgroundColor: 'black', padding: 3, height: 450, opacity: 0.8 }}>
         <CardContent>
-          <Typography variant="h4" color="white" sx={{ fontWeight: 'bold', textAlign:'center' }} gutterBottom>
+          <Typography variant="h4" color="white" sx={{ fontWeight: 'bold', textAlign: 'center' }} gutterBottom>
             Skills
           </Typography>
           <Typography variant="body1" color="white" paragraph sx={{ textAlign: 'center', marginBottom: 3 }}>
@@ -63,27 +64,26 @@ export default function SkillsCard() {
                 display: 'flex',
                 overflow: 'hidden',
                 width: '80%',
-                justifyContent: 'space-evenly', // Adjust space between circles
+                justifyContent: 'center',
                 alignItems: 'center',
               }}
             >
               <Grid container spacing={3} justifyContent="center">
                 {skills.slice(scrollIndex, scrollIndex + skillsPerPage).map((skill, index) => (
-                  <Grid item key={index}>
+                  <Grid item xs={6} sm={12} md={3} key={index}>
                     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <CircularProgress
+                      <CircularProgress
                         variant="determinate"
                         value={skill.percentage}
-                        size={200}
+                        size={150}  // Size adjusted to prevent overlap
                         thickness={9}
                         sx={{
-                            color: 'pink',
-                            marginBottom: 2,
-                            marginTop:2,
-                            position: 'relative',
+                          color: 'pink',
+                          marginBottom: 2,
+                          marginTop: 2,
+                          position: 'relative',
                         }}
-                        >
-                    </CircularProgress>
+                      />
                       <Typography variant="h6" color="white">
                         {skill.label}
                       </Typography>

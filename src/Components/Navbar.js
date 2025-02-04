@@ -12,10 +12,9 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';  // Import HashLink for smooth scrolling
 
-const pages = ['About','Skills', 'Projects', 'Contact'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ['About', 'Skills', 'Projects', 'Contact'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -40,7 +39,7 @@ function ResponsiveAppBar() {
     <AppBar position="fixed" sx={{ top: 0, left: 0, right: 0 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-        <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
+          <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
             <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
             <Typography
               variant="h6"
@@ -60,7 +59,6 @@ function ResponsiveAppBar() {
               LOGO
             </Typography>
           </Box>
-
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -91,25 +89,21 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Link to={`/${page.toLowerCase()}`} style={{ textDecoration: 'none' }}>
+                  <HashLink smooth to={`#${page.toLowerCase()}`} style={{ textDecoration: 'none' }}>
                     <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
-                  </Link>
+                  </HashLink>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          
+
           {/* Desktop Menu */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                <Link to={`/${page.toLowerCase()}`} style={{ color: 'white', textDecoration: 'none' }}>
+              <Button key={page} onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>
+                <HashLink smooth to={`#${page.toLowerCase()}`} style={{ color: 'white', textDecoration: 'none' }}>
                   {page}
-                </Link>
+                </HashLink>
               </Button>
             ))}
           </Box>
@@ -135,9 +129,7 @@ function ResponsiveAppBar() {
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
-            >
-              {/* Add menu items here as needed */}
-            </Menu>
+            />
           </Box>
         </Toolbar>
       </Container>

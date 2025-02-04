@@ -1,0 +1,116 @@
+/* Contact Section */
+.contact {
+    background: linear-gradient(135deg, #9b4dca, #f06292); /* Purple to Pink Gradient */
+    padding: 40px 0;
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Container and Row Adjustments */
+.contact .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contact h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Left Column - Image */
+.contact .col-md-6 img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+}
+
+/* Form Styling */
+.contact form {
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+    opacity:0.5 ;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #e01458; /* Pink border */
+    border-radius: 4px;
+    background-color: transparent;
+    color: black;
+    font-size: 20px;
+}
+
+.contact input::placeholder,
+.contact textarea::placeholder {
+    color: #d1cfcf;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    outline: none;
+    border-color: #650bcc; /* Purple border on focus */
+}
+
+.contact textarea {
+    height: 150px;
+}
+
+.contact button {
+    background-color: #f06292; /* Pink button */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact button:hover {
+    background-color: #2867c5; /* Purple button on hover */
+}
+
+/* Success and Error Messages */
+.contact p.success {
+    color: #4caf50; /* Green for success */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.contact p.danger {
+    color: #f44336; /* Red for error */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .contact .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact .col-md-6 {
+        margin-bottom: 30px;
+    }
+
+    .contact form {
+        padding: 40px;
+        max-width: 70%;
+    }
+}

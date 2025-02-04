@@ -1,0 +1,46 @@
+
+.footer {
+    background-image: url('../Assets/footer-bg.png');
+    background-color: #000; /* Black background */
+    padding: 30px ;
+    height: 100px;
+    color: white;
+  }
+  
+  .footer .row {
+    display: flex;
+    align-items: center; /* Align vertically */
+    justify-content: space-between; /* Space between logo and icons */
+  }
+  .footer-logo {
+    max-width: 100px;  /* Adjust the logo size */
+  }
+  
+  .social-icon {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+  }
+
+  .social-icon a {
+    margin: 0 10px;
+    display: inline-block;
+    
+  }
+  
+  .social-icon img {
+    width: 30px; /* Adjust the icon size */
+    height: 30px;
+    transition: transform 0.3s ease; /* For hover effect */
+  }
+  
+  .social-icon img:hover {
+    transform: scale(1.2); /* Slightly increase size on hover */
+  }
+  
+  @media (max-width: 576px) {
+    .social-icon {
+      text-align: center; /* Align the icons in the center for small screens */
+    }
+  }
+  
