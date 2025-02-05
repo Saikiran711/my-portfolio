@@ -17,21 +17,6 @@ export default function Contact() {
   const [buttonText, setButtonText] = useState('Send');
   const [status, setStatus] = useState({});
 
-  useEffect(() => {
-    emailjs.init({
-      publicKey: 'YOUR_PUBLIC_KEY',
-      blockHeadless: true,
-      blockList: {
-        list: ['foo@emailjs.com', 'bar@emailjs.com'],
-        watchVariable: 'userEmail',
-      },
-      limitRate: {
-        id: 'app',
-        throttle: 10000,
-      },
-    });
-  }, []);
-
   const onFormUpdate = (category, value) => {
     setFormDetails({
       ...formDetails,
@@ -51,7 +36,9 @@ export default function Contact() {
       message: formDetails.message,
     };
 
-    emailjs.send('service_c4fv16r', 'template_55dm0aq', templateParams,{publicKey: 'wZ_7Du9ksDOPjJ3bB',})
+    emailjs.send(  process.env.REACT_APP_EMAILJS_SERVICE_ID,  
+      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+      templateParams,{publicKey:  process.env.REACT_APP_EMAILJS_PUBLIC_KEY,})
       .then(
         (response) => {
           setButtonText("Send");
